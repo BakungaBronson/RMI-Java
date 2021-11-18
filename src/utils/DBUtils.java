@@ -2,7 +2,6 @@ package utils;
 
 import java.io.Serializable;
 import java.sql.*;
-import java.util.Arrays;
 
 /**
  * Utility class to handle DB operations such setting up a connection, executing queries,
@@ -30,10 +29,10 @@ public class DBUtils implements Serializable {
 
     /**
      * Executes Insert Query to add row in the database
-     * @param query
-     * @throws SQLException
+     * @param query The query to execute
+     * @throws SQLException If the query is not successful
      */
-    public void save(String query) throws SQLException {
+    public static void save(String query) throws SQLException {
         Statement statement = connection.createStatement();
 
         if( statement.executeUpdate(query) != 1 ){
@@ -44,9 +43,9 @@ public class DBUtils implements Serializable {
 
     /**
      * Queries table for all results and columns
-     * @param tableName
-     * @return
-     * @throws SQLException
+     * @param tableName The name of the table int the database
+     * @return This is a result set of the query if successful
+     * @throws SQLException If the query is not successful
      */
     public static ResultSet findAll(String tableName ) throws SQLException {
         setUp();
@@ -54,26 +53,75 @@ public class DBUtils implements Serializable {
 
         String query = "SELECT * FROM " + tableName ;
 
-        ResultSet resultSet = statement.executeQuery(query);
-
-        return resultSet;
+        return statement.executeQuery(query);
     }
 
     /**
      * Queries table for specific columns
-     * @param tableName
-     * @param columns
-     * @return
-     * @throws SQLException
+     * @param tableName The name of the table in the Hrrs database
+     * @param column The name of the column int the table
+     * @return This is a result set of the successful query
+     * @throws SQLException If the query is not successful
      */
-    public ResultSet findAll(String tableName, String[] columns ) throws SQLException {
+    public static ResultSet findAll(String tableName, String column ) throws SQLException {
+        setUp();
         Statement statement = connection.createStatement();
 
-        String query = "SELECT "+ Arrays.stream(columns).toList()  + " FROM " + tableName ;
+        String query = "SELECT "+ column  + " FROM " + tableName ;
 
-        ResultSet resultSet = statement.executeQuery(query);
+        return statement.executeQuery(query);
+    }
 
-        return resultSet;
+    public static int count(int type) throws SQLException {
+        setUp();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT COUNT(`room_id`) FROM `guest-room` WHERE room_id = "+type+";";
+
+        ResultSet resultSet= statement.executeQuery(query);
+
+        resultSet.next();
+
+        return resultSet.getInt("COUNT(`room_id`)");
+    }
+
+    public static int number_of_rooms(int type) throws SQLException {
+        setUp();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT number FROM rooms WHERE type = "+type+" ;";
+
+        ResultSet resultSet= statement.executeQuery(query);
+
+        resultSet.next();
+
+        return resultSet.getInt("number");
+    }
+
+    public static String room_name(int type) throws SQLException {
+        setUp();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT name from rooms where type = "+type+" ;";
+
+        ResultSet resultSet= statement.executeQuery(query);
+
+        resultSet.next();
+
+        return resultSet.getString("name");
+    }
+
+    public static int get_ID(String guest) throws SQLException {
+        setUp();
+        Statement statement = connection.createStatement();
+
+        String query = "SELECT id FROM guest WHERE name = '"+guest+"' ;";
+
+        ResultSet resultSet= statement.executeQuery(query);
+
+        resultSet.next();
+
+        return resultSet.getInt("id");
     }
 }
 
