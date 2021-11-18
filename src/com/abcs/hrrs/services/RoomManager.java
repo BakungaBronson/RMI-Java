@@ -1,7 +1,6 @@
-/**
- * 
- */
 package com.abcs.hrrs.services;
+
+import java.rmi.Remote;
 
 /**
  * RoomManager interface contains the methods to use in the System
@@ -9,6 +8,6 @@ package com.abcs.hrrs.services;
  * @author katusiimeconrad
  *
  */
-public interface RoomManager {
-	//TODO
+public interface RoomManager extends Remote {
+    String book(String address, String room_type, String guest_name) throws Exception;
 }
