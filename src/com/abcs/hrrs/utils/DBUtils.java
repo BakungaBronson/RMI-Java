@@ -1,4 +1,4 @@
-package utils;
+package com.abcs.hrrs.utils;
 
 import java.io.Serializable;
 import java.sql.*;
@@ -6,6 +6,8 @@ import java.sql.*;
 /**
  * Utility class to handle DB operations such setting up a connection, executing queries,
  * committing transactions for various tables;
+ *
+ * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  */
 public class DBUtils implements Serializable {
 
@@ -72,6 +74,12 @@ public class DBUtils implements Serializable {
         return statement.executeQuery(query);
     }
 
+    /**
+     * Returns the Number of Bookings For a given Room Type
+     * @param type
+     * @return
+     * @throws SQLException
+     */
     public static int count(int type) throws SQLException {
         setUp();
         Statement statement = connection.createStatement();
@@ -85,7 +93,13 @@ public class DBUtils implements Serializable {
         return resultSet.getInt("COUNT(`room_id`)");
     }
 
-    public static int number_of_rooms(int type) throws SQLException {
+    /**
+     * Returns the Total Number of Rooms for a Given Type
+     * @param type
+     * @return
+     * @throws SQLException
+     */
+    public static int numberOfRooms(int type) throws SQLException {
         setUp();
         Statement statement = connection.createStatement();
 
@@ -98,7 +112,13 @@ public class DBUtils implements Serializable {
         return resultSet.getInt("number");
     }
 
-    public static String room_name(int type) throws SQLException {
+    /**
+     * Returns The Name of a Room Type
+     * @param type
+     * @return
+     * @throws SQLException
+     */
+    public static String roomName(int type) throws SQLException {
         setUp();
         Statement statement = connection.createStatement();
 
@@ -111,7 +131,13 @@ public class DBUtils implements Serializable {
         return resultSet.getString("name");
     }
 
-    public static int get_ID(String guest) throws SQLException {
+    /**
+     * Returns the guest ID
+     * @param guest
+     * @return guest_id
+     * @throws SQLException
+     */
+    public static int getID(String guest) throws SQLException {
         setUp();
         Statement statement = connection.createStatement();
 
@@ -123,6 +149,13 @@ public class DBUtils implements Serializable {
 
         return resultSet.getInt("id");
     }
+
+//    public static int getBookedRooms() throws SQLException {
+//        setUp();
+//        Statement statement = connection.createStatement();
+//        String query = "SELECT room_id as type, COUNT(*) as bookings from `guest-room` GROUP BY room_id";
+//
+//    }
 }
 
 

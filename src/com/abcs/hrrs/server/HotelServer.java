@@ -12,7 +12,7 @@ import com.abcs.hrrs.services.impl.RoomManagerImpl;
 /**
  * Class to handle Server Logic
  * 
- * @author katusiimeconrad
+ * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  *
  */
 public class HotelServer implements Serializable {
@@ -25,12 +25,20 @@ public class HotelServer implements Serializable {
 			// Create an instance
 			RoomManagerImpl roomManager = new RoomManagerImpl();
 
-			// binding the server to the rmiregistry
-			Naming.rebind("rmi://localhost:1099/roomManager", roomManager);
+//			// binding the server to the rmiregistry
+//			Naming.rebind("rmi://localhost:1099/roomManager", roomManager);
+//
+//			// Naming.rebind("book", roomManager);
 
-			// Naming.rebind("book", roomManager);
-	        
-	        System.out.println("Server is Ready");
+
+			//Create Server Instance Dynamically
+
+			Registry reg = LocateRegistry.createRegistry(1099);
+
+			reg.rebind("rmi://localhost:1099/rooms", roomManager);
+
+
+	        System.out.println("Server is Ready \n" + reg.toString() );
 
 		} catch (Exception e) {
 			System.out.println("An error occurred Error: " + e);
