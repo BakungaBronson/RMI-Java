@@ -2,9 +2,9 @@
 ### Distributed Systems - Remote Method Invocation done in the Java language
 
 ### Group
-Bakunga Bronson
-Opio Andrew
-Katusiime Conrad
+Bakunga Bronson,
+Opio Andrew,
+Katusiime Conrad,
 Nakagwe Sharifah
 
 ### RMI Client/Server Program
