@@ -54,7 +54,7 @@ public class HotelClient {
 
                 } else if (args[0].equals("book")) {
                     //rm.Book(arg[1], arg[2]);
-                    RoomManager manager = (RoomManager) Naming.lookup("rmi://" + args[1] + ":1099/roomManager");
+                    getService(args[1]);
 
                     try {
                         int val = Integer.parseInt(args[2]);
@@ -68,7 +68,7 @@ public class HotelClient {
 
                 } else if (args[0].equals("guests")) {
 
-                    RoomManager manager = (RoomManager) Naming.lookup("rmi://" + args[1] + ":1099/roomManager");
+                    getService(args[1]);
 
                     ArrayList<Data> res = manager.Guests();
 
