@@ -35,6 +35,7 @@ w rooms of type 1 are available for 75,000 UGX per night
   x rooms of type 2 are available for 80,000 UGX per night 
   y rooms of type 3 are available for 150,000 UGX per night 
   z rooms of type 4 are available for 230,000 UGX per night
+  
 #### The values of v, w, x, y, and z should be the current number of available rooms for each type of room.
   
 <li> java HotelClient book <server address> <room type> <guest name>: books a room of the specified type (if available), and registers the name of the guest.
