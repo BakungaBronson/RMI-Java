@@ -13,15 +13,19 @@ import com.abcs.hrrs.utils.DBUtils;
 
 /**
  * Contains the implementation logic of the {@link RoomManager} interface
- * 
- * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  *
+ * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  */
 public class RoomManagerImpl extends UnicastRemoteObject implements RoomManager {
 
 	private static final long serialVersionUID = 1L;
 
-	public RoomManagerImpl() throws RemoteException {
+    /**
+     * Instantiates a new Room manager.
+     *
+     * @throws RemoteException the remote exception
+     */
+    public RoomManagerImpl() throws RemoteException {
 		super();
 	}
 

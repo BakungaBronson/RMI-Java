@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.abcs.hrrs.client"},{"l":"com.abcs.hrrs.data"},{"l":"com.abcs.hrrs.models"},{"l":"com.abcs.hrrs.server"},{"l":"com.abcs.hrrs.services"},{"l":"com.abcs.hrrs.services.impl"},{"l":"com.abcs.hrrs.utils"}];updateSearchResults();

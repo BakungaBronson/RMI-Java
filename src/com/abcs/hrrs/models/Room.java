@@ -37,72 +37,108 @@ public class Room implements Serializable {
 
     /**
      * Returns Room Type
-     * @return type
+     *
+     * @return type type
      */
     public int getType() {
         return type;
     }
 
+    /**
+     * Sets type.
+     *
+     * @param type the type
+     */
     public void setType(int type) {
         this.type = type;
     }
 
     /**
      * Returns Room Type Name
-     * @return name
+     *
+     * @return name name
      */
     public String getName() {
         return name;
     }
 
+    /**
+     * Sets name.
+     *
+     * @param name the name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
      * Return the number of Rooms For a given Type
-     * @return number
+     *
+     * @return number number
      */
     public int getNumber() {
         return number;
     }
 
+    /**
+     * Sets number.
+     *
+     * @param number the number
+     */
     public void setNumber(int number) {
         this.number = number;
     }
 
     /**
      * Returns the cost of a room for a given Room Type
-     * @return cost
+     *
+     * @return cost cost
      */
     public int getCost() {
         return cost;
     }
 
+    /**
+     * Sets cost.
+     *
+     * @param cost the cost
+     */
     public void setCost(int cost) {
         this.cost = cost;
     }
 
     /**
      * Return the number of booked rooms
-     * @return
+     *
+     * @return bookings
      */
     public int getBookings() {
         return bookings;
     }
 
+    /**
+     * Sets bookings.
+     *
+     * @param bookings the bookings
+     */
     public void setBookings(int bookings) {
         this.bookings = bookings;
     }
 
     /**
      * Returns the number of available rooms
-     * @return
+     *
+     * @return available
      */
     public int getAvailable() {
         return available;
     }
 
+    /**
+     * Sets available.
+     *
+     * @param available the available
+     */
     public void setAvailable(int available) {
         this.available = available;
     }

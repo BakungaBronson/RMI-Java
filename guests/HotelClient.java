@@ -3,8 +3,16 @@ import java.rmi.Naming;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * The type Hotel client.
+ */
 public class HotelClient {
-    public static void main (String [] args) {        
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
+    public static void main (String [] args) {
         try {
             RoomManager rm = (RoomManager)
             Naming.lookup("rmi://localhost:1099/HotelService");
