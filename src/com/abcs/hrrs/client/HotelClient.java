@@ -1,9 +1,5 @@
 package com.abcs.hrrs.client;
 
-import com.abcs.hrrs.data.Data;
-import com.abcs.hrrs.models.Room;
-import com.abcs.hrrs.services.RoomManager;
-
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
@@ -11,6 +7,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import com.abcs.hrrs.data.Data;
+import com.abcs.hrrs.models.Room;
+import com.abcs.hrrs.services.RoomManager;
 
 /**
  * Class to handle Client logic
@@ -24,9 +24,9 @@ public class HotelClient {
      * Helper method to locate server based on serverAddress.
      * Sets manager Object of type {@link RoomManager}
      *
-     * @param serverAddress
-     * @throws RemoteException
-     * @throws NotBoundException
+     * @param serverAddress the server address
+     * @throws RemoteException   the remote exception
+     * @throws NotBoundException the not bound exception
      */
     public static void getService(String serverAddress) throws RemoteException, NotBoundException {
 
@@ -38,6 +38,8 @@ public class HotelClient {
 
     /**
      * Takes a string of arguments
+     *
+     * @param args the input arguments
      */
     public static void main(String[] args) {
         try {
@@ -86,15 +88,10 @@ public class HotelClient {
                 //Display how to Use
 				System.out.println("How to Use ");
 				//Instructions
-                System.out.println("java HotelClient list <server address>: " +
-						"\n list the available number of rooms in each price range");
-				System.out.println("java HotelClient book <server address> <room type> <guest name>: " +
-						" \n books a room of the specified type (if available), and registers the name of the guest.");
-				System.out.println("java HotelClient guests <server address>: " +
-						"\n list the names of all the registered guests");
-				System.out.println("java HotelClient revenue <server address>: " +
-						"\n prints the revenue breakdown based on\n" +
-						"the booked rooms and their types");
+                System.out.println("java HotelClient list <server address>:" );
+				System.out.println("java HotelClient book <server address> <room type> <guest name>:");
+				System.out.println("java HotelClient guests <server address>: ");
+				System.out.println("java HotelClient revenue <server address>: ");
             }
 
         } catch (Exception e) {
@@ -107,7 +104,8 @@ public class HotelClient {
     /**
      * Helper function to render Rooms
      *
-     * @throws SQLException
+     * @param rooms the rooms
+     * @throws SQLException the sql exception
      */
     public static void displayRooms(ArrayList<Room> rooms) throws SQLException {
         System.out.println("Room Availability ");
@@ -121,6 +119,12 @@ public class HotelClient {
         }
     }
 
+    /**
+     * Displays the Revenue Breakdown
+     *
+     * @param rooms the rooms
+     * @throws SQLException the sql exception
+     */
     public static void showRevenueBreakdown(ArrayList<Room> rooms) throws SQLException {
         int totalRevenue = 0;
         System.out.println("Revenue Breakdown : Per Room Type");

@@ -1,25 +1,27 @@
 package com.abcs.hrrs.server;
 
 import java.io.Serializable;
-import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import com.abcs.hrrs.services.RoomManager;
 import com.abcs.hrrs.services.impl.RoomManagerImpl;
 
 /**
  * Class to handle Server Logic
- * 
- * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  *
+ * @authors Katusiime Conrad, Bakunga Bronson, Opio Andrew, Nakagwe Sharifah
  */
 public class HotelServer implements Serializable {
 
 
-
-	public static void main(String[] args) throws RemoteException {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     * @throws RemoteException the remote exception
+     */
+    public static void main(String[] args) throws RemoteException {
 
 		try {
 			// Create an instance
@@ -38,7 +40,7 @@ public class HotelServer implements Serializable {
 			reg.rebind("rmi://localhost:1099/rooms", roomManager);
 
 
-	        System.out.println("Server is Ready \n" + reg.toString() );
+	        System.out.println("Server is Ready \n" + reg);
 
 		} catch (Exception e) {
 			System.out.println("An error occurred Error: " + e);

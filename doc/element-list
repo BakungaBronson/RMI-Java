@@ -1,0 +1,7 @@
+com.abcs.hrrs.client
+com.abcs.hrrs.data
+com.abcs.hrrs.models
+com.abcs.hrrs.server
+com.abcs.hrrs.services
+com.abcs.hrrs.services.impl
+com.abcs.hrrs.utils

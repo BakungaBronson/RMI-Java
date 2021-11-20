@@ -1,7 +1,13 @@
 import java.rmi.Naming;
 
+/**
+ * The type Hotel server.
+ */
 public class HotelServer {
 
+    /**
+     * Instantiates a new Hotel server.
+     */
     public HotelServer() {
         try {
             RoomManagerImpl rm = new RoomManagerImpl();
@@ -12,6 +18,11 @@ public class HotelServer {
         }
     }
 
+    /**
+     * Main.
+     *
+     * @param args the args
+     */
     public static void main (String args [] ) {
         new HotelServer();
     }

@@ -1,6 +1,15 @@
 import java.sql.*;
 
-public class dbconn { 
+/**
+ * The type Dbconn.
+ */
+public class dbconn {
+    /**
+     * Execute result set.
+     *
+     * @param query the query
+     * @return the result set
+     */
     public ResultSet Execute(String query){
         ResultSet rs = null;
         try {  
