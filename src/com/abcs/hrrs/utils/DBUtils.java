@@ -35,11 +35,13 @@ public class DBUtils implements Serializable {
         try {
             Class.forName("com.mysql.jdbc.Driver");
 
+            connection = DriverManager.getConnection(url, username, password);
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        connection = DriverManager.getConnection(url, username, password);
+
     }
 
     /**
@@ -69,6 +71,8 @@ public class DBUtils implements Serializable {
 
         String query = "SELECT * FROM " + tableName;
 
+        //        //Close Connection to DB
+//        closeConnection();
         return statement.executeQuery(query);
     }
 
@@ -86,6 +90,8 @@ public class DBUtils implements Serializable {
 
         String query = "SELECT " + column + " FROM " + tableName;
 
+        //        //Close Connection to DB
+//        closeConnection();
         return statement.executeQuery(query);
     }
 
@@ -105,6 +111,9 @@ public class DBUtils implements Serializable {
         ResultSet resultSet = statement.executeQuery(query);
 
         resultSet.next();
+
+//        //Close Connection to DB
+//        closeConnection();
 
         return resultSet.getInt("COUNT(`room_id`)");
     }
@@ -126,6 +135,9 @@ public class DBUtils implements Serializable {
 
         resultSet.next();
 
+//        //Close Connection to DB
+//        closeConnection();
+
         return resultSet.getInt("number");
     }
 
@@ -145,6 +157,9 @@ public class DBUtils implements Serializable {
         ResultSet resultSet = statement.executeQuery(query);
 
         resultSet.next();
+
+//        //Close Connection to DB
+//        closeConnection();
 
         return resultSet.getString("name");
     }
@@ -166,8 +181,20 @@ public class DBUtils implements Serializable {
 
         resultSet.next();
 
+//        //Close Connection to DB
+//        closeConnection();
+
         return resultSet.getInt("id");
     }
+
+    /**
+     * Function to close the connection to DB after a transaction
+     * @throws SQLException
+     */
+    public static void closeConnection() throws SQLException {
+        connection.close();
+    }
+
 
 //    public static int getBookedRooms() throws SQLException {
 //        setUp();

@@ -46,15 +46,29 @@ public class HotelClient {
 
             System.out.println("Connect : OK\n");
 
-            if (args.length > 0) {
+            //The Least number of arguments to be supplied is two
+            if (args.length > 1 ) {
+
+                //Check that a server has been provided
+                if( args[1] == null ) {
+                    throw new Exception("Server not entered - try localhost");
+                }
+                String server = args[1];
+
+
                 if (args[0].equals("list")) {
                     //LIST
-                    getService("localhost");
+
+                    //get the entered server
+                    getService(server);
+
+                    //Call Helper method to display rooms
                     displayRooms(manager.getRooms());
 
                 } else if (args[0].equals("book")) {
                     //rm.Book(arg[1], arg[2]);
-                    getService(args[1]);
+                    //get the entered server
+                    getService(server);
 
                     try {
                         int val = Integer.parseInt(args[2]);
@@ -68,7 +82,8 @@ public class HotelClient {
 
                 } else if (args[0].equals("guests")) {
 
-                    getService(args[1]);
+                    //get the entered server
+                    getService(server);
 
                     ArrayList<Data> res = manager.Guests();
 
@@ -79,25 +94,28 @@ public class HotelClient {
                     }
 
                 } else if (args[0].equals("revenue")) {
-                    getService(args[1]);
+                    //get the entered server
+                    getService(server);
 
                     showRevenueBreakdown(manager.getRooms());
                 }
 
             } else {
                 //Display how to Use
-				System.out.println("How to Use ");
-				//Instructions
+                System.out.println("How to Use ");
+                //Instructions
                 System.out.println("java HotelClient list <server address>:" );
-				System.out.println("java HotelClient book <server address> <room type> <guest name>:");
-				System.out.println("java HotelClient guests <server address>: ");
-				System.out.println("java HotelClient revenue <server address>: ");
+                System.out.println("java HotelClient book <server address> <room type> <guest name>:");
+                System.out.println("java HotelClient guests <server address>: ");
+                System.out.println("java HotelClient revenue <server address>: ");
             }
 
         } catch (Exception e) {
             System.out.println("Received Exception : " + e);
 
         }
+
+
 
     }
 
